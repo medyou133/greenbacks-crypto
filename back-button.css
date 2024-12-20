@@ -1,0 +1,41 @@
+/* أنماط زر العودة */
+.back-item {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.back-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 35px !important;
+    height: 35px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: var(--text-white) !important;
+    text-decoration: none !important;
+    margin-right: 1rem !important;
+}
+
+.back-btn i {
+    font-size: 1rem !important;
+    color: var(--text-white) !important;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: translateX(-5px) !important;
+}
+
+/* تحديث التجاوب */
+@media (max-width: 768px) {
+    .back-btn {
+        width: 30px !important;
+        height: 30px !important;
+        margin-right: 0.5rem !important;
+    }
+    
+    .back-btn i {
+        font-size: 0.9rem !important;
+    }
+}

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GBAK - Content Creator Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <nav class="main-nav">
+            <div class="nav-left">
+                <div class="logo">
+                    <img src="assets/1x1_The_image_features_a_circular_go-Photoroom.png" alt="GREENBACK$" class="logo-img">
+                    <span translate="no">GREENBACK<span class="dollar">$</span></span>
+                </div>
+                <a href="javascript:history.back()" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="roadmap.html">Roadmap</a></li>
+                    <li><a href="about.html">About GBAK</a></li>
+                    <li><a href="mining.html">Mining</a></li>
+                    <li><a href="#contact">Contact Admin</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="creator-guide-main">
+            <div class="guide-header">
+                <h1>Content Creation Steps</h1>
+            </div>
+
+            <div class="steps-grid">
+                <!-- Step 1 -->
+                <div class="step-box">
+                    <div class="step-number">1</div>
+                    <div class="step-image">
+                        <div class="icon-group">
+                            <i class="fab fa-youtube"></i>
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                    </div>
+                    <h3>Create Original Video</h3>
+                    <p>Create a professional video showcasing your talent or promoting GREENBACK$</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-box">
+                    <div class="step-number">2</div>
+                    <div class="step-image">
+                        <div class="icon-group">
+                            <i class="fas fa-file-video"></i>
+                            <i class="fas fa-upload"></i>
+                        </div>
+                    </div>
+                    <h3>Upload to Platform</h3>
+                    <p>Upload your video to our secure platform</p>
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span id="uploadText">Drop video here or click to upload</span>
+                        <div id="uploadPreview" style="display: none;">
+                            <span class="filename"></span>
+                            <button class="remove-file">Remove File</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-box">
+                    <div class="step-number">3</div>
+                    <div class="step-image">
+                        <div class="icon-group">
+                            <i class="fab fa-youtube"></i>
+                            <i class="fas fa-plus"></i>
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                    </div>
+                    <h3>Add Your Links</h3>
+                    <div class="social-inputs">
+                        <div class="social-input">
+                            <i class="fab fa-youtube"></i>
+                            <input type="text" placeholder="YouTube URL">
+                        </div>
+                        <div class="social-input">
+                            <i class="fab fa-tiktok"></i>
+                            <input type="text" id="tiktokUrl" placeholder="TikTok URL">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="step-box">
+                    <div class="step-number">4</div>
+                    <div class="step-image">
+                        <div class="icon-group">
+                            <i class="fas fa-share-alt"></i>
+                            <i class="fas fa-globe"></i>
+                        </div>
+                    </div>
+                    <h3>We Share Your Content</h3>
+                    <p>Your video will be shared on YouTube and TikTok with your channel links</p>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="step-box">
+                    <div class="step-number">5</div>
+                    <div class="step-image">
+                        <div class="icon-group">
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-comments"></i>
+                            <i class="fas fa-share"></i>
+                        </div>
+                    </div>
+                    <h3>Community Engagement</h3>
+                    <p>Our community will engage with your content</p>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="step-box">
+                    <div class="step-number">6</div>
+                    <div class="step-image">
+                        <div class="icon-group">
+                            <i class="fas fa-video"></i>
+                            <i class="fas fa-hashtag"></i>
+                        </div>
+                    </div>
+                    <h3>Create Reaction</h3>
+                    <p>Create a reaction video and tag GREENBACK$</p>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="start-btn" id="startBtn" disabled>
+                    <i class="fas fa-play"></i>
+                    Start Creating
+                </button>
+                <button class="help-btn">
+                    <i class="fas fa-question-circle"></i>
+                    Need Help?
+                </button>
+            </div>
+        </main>
+
+        <footer class="main-footer">
+            <div class="footer-content">
+                <p>&copy; 2024 GREENBACK$. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="successModal" style="display: none;">
+        <div class="modal-content">
+            <h3>Submission Successful!</h3>
+            <p>Your video has been successfully uploaded and shared on YouTube and TikTok.</p>
+            <button class="close-modal">Close</button>
+        </div>
+    </div>
+
+    <script>
+        let uploadedFile = null;
+        const uploadArea = document.getElementById('uploadArea');
+        const uploadText = document.getElementById('uploadText');
+        const uploadPreview = document.getElementById('uploadPreview');
+        const tiktokInput = document.getElementById('tiktokUrl');
+        const startBtn = document.getElementById('startBtn');
+        const successModal = document.getElementById('successModal');
+        const videoStatus = document.getElementById('videoStatus');
+        const tiktokStatus = document.getElementById('tiktokStatus');
+
+        // التحقق من اكتمال المتطلبات
+        function checkRequirements() {
+            const isVideoUploaded = uploadedFile !== null;
+            const isTiktokValid = /https?:\/\/(www\.)?tiktok\.com\/@[\w\.-]+/.test(tiktokInput.value);
+            
+            startBtn.disabled = !(isVideoUploaded && isTiktokValid);
+            
+            // تحديث حالة المعاينة
+            videoStatus.textContent = isVideoUploaded ? 'Ready ✓' : 'Not uploaded';
+            videoStatus.style.color = isVideoUploaded ? '#4CAF50' : '#ff4444';
+            
+            tiktokStatus.textContent = isTiktokValid ? 'Valid ✓' : 'Not provided';
+            tiktokStatus.style.color = isTiktokValid ? '#4CAF50' : '#ff4444';
+
+            // تحديث حالة الزر
+            if (isVideoUploaded && isTiktokValid) {
+                startBtn.classList.add('ready');
+            } else {
+                startBtn.classList.remove('ready');
+            }
+        }
+
+        // معالجة رفع الملف
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const file = e.dataTransfer.files[0];
+            handleFile(file);
+        });
+
+        uploadArea.addEventListener('click', () => {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'video/mp4';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                handleFile(file);
+            };
+            input.click();
+        });
+
+        function handleFile(file) {
+            if (file && file.type === 'video/mp4' && file.size <= 100 * 1024 * 1024) {
+                uploadedFile = file;
+                
+                // تحديث واجهة المستخدم
+                uploadText.style.display = 'none';
+                uploadPreview.style.display = 'flex';
+                uploadPreview.querySelector('.filename').textContent = file.name;
+                
+                // إضافة معاينة الفيديو
+                const videoPreview = document.createElement('video');
+                videoPreview.src = URL.createObjectURL(file);
+                videoPreview.style.maxWidth = '100%';
+                videoPreview.style.borderRadius = '8px';
+                videoPreview.style.marginTop = '1rem';
+                videoPreview.controls = true;
+                
+                // إزالة معاينة سابقة إن وجدت
+                const oldPreview = uploadArea.querySelector('video');
+                if (oldPreview) {
+                    oldPreview.remove();
+                }
+                
+                uploadArea.appendChild(videoPreview);
+                
+                checkRequirements();
+            } else {
+                alert('Please upload an MP4 video file under 100MB');
+            }
+        }
+
+        // إزالة الملف
+        document.querySelector('.remove-file').addEventListener('click', () => {
+            uploadedFile = null;
+            uploadText.style.display = 'block';
+            uploadPreview.style.display = 'none';
+            
+            // إزالة معاينة الفيديو
+            const videoPreview = uploadArea.querySelector('video');
+            if (videoPreview) {
+                videoPreview.remove();
+            }
+            
+            checkRequirements();
+        });
+
+        // التحقق من رابط التيك توك
+        tiktokInput.addEventListener('input', () => {
+            const isValid = /https?:\/\/(www\.)?tiktok\.com\/@[\w\.-]+/.test(tiktokInput.value);
+            const inputGroup = tiktokInput.parentElement;
+            
+            inputGroup.classList.toggle('valid', isValid);
+            inputGroup.classList.toggle('invalid', tiktokInput.value && !isValid);
+            
+            checkRequirements();
+        });
+
+        // معالجة النقر على زر البدء
+        startBtn.addEventListener('click', async () => {
+            if (!startBtn.disabled) {
+                // إظهار تأكيد قبل المتابعة
+                const confirmed = await showConfirmation();
+                if (confirmed) {
+                    try {
+                        // تعطيل الزر وإظهار التحميل
+                        startBtn.disabled = true;
+                        startBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+                        
+                        // إنشاء FormData لإرسال الملف
+                        const formData = new FormData();
+                        formData.append('video', uploadedFile);
+                        formData.append('tiktok_url', tiktokInput.value);
+                        
+                        // إرسال الطلب إلى الخادم
+                        const response = await fetch('http://localhost:5000/api/upload', {
+                            method: 'POST',
+                            body: formData
+                        });
+                        
+                        const result = await response.json();
+                        
+                        if (result.success) {
+                            // إظهار رسالة النجاح
+                            successModal.style.display = 'flex';
+                        } else {
+                            throw new Error(result.error || 'Upload failed');
+                        }
+                    } catch (error) {
+                        alert('Error uploading video: ' + error.message);
+                    } finally {
+                        // إعادة الزر إلى حالته الأصلية
+                        startBtn.disabled = false;
+                        startBtn.innerHTML = '<i class="fas fa-play"></i> Start Creating';
+                    }
+                }
+            }
+        });
+
+        // إظهار تأكيد
+        function showConfirmation() {
+            return new Promise((resolve) => {
+                const confirmModal = document.createElement('div');
+                confirmModal.className = 'modal';
+                confirmModal.innerHTML = `
+                    <div class="modal-content">
+                        <h3>Confirm Submission</h3>
+                        <p>Are you sure you want to submit the following?</p>
+                        <div class="confirm-details">
+                            <p><strong>Video:</strong> ${uploadedFile.name}</p>
+                            <p><strong>TikTok:</strong> ${tiktokInput.value}</p>
+                        </div>
+                        <div class="modal-buttons">
+                            <button class="confirm-btn">Confirm</button>
+                            <button class="cancel-btn">Cancel</button>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(confirmModal);
+                confirmModal.style.display = 'flex';
+                
+                const confirmBtn = confirmModal.querySelector('.confirm-btn');
+                const cancelBtn = confirmModal.querySelector('.cancel-btn');
+                
+                confirmBtn.onclick = () => {
+                    confirmModal.remove();
+                    resolve(true);
+                };
+                
+                cancelBtn.onclick = () => {
+                    confirmModal.remove();
+                    resolve(false);
+                };
+            });
+        }
+
+        // إغلاق النافذة المنبثقة للنجاح
+        document.querySelector('.close-modal').addEventListener('click', () => {
+            successModal.style.display = 'none';
+            // إعادة تعيين النموذج
+            uploadedFile = null;
+            uploadText.style.display = 'block';
+            uploadPreview.style.display = 'none';
+            tiktokInput.value = '';
+            
+            // إزالة معاينة الفيديو
+            const videoPreview = uploadArea.querySelector('video');
+            if (videoPreview) {
+                videoPreview.remove();
+            }
+            
+            checkRequirements();
+        });
+    </script>
+</body>
+</html>

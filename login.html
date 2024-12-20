@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GBAK Mining Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="back-button.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <nav class="main-nav">
+            <div class="nav-left">
+                <div class="logo">
+                    <img src="assets/1x1_The_image_features_a_circular_go-Photoroom.png" alt="GREENBACK$" class="logo-img">
+                    <span translate="no">GREENBACK<span class="dollar">$</span></span>
+                </div>
+            </div>
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li class="back-item">
+                        <a href="javascript:history.back()" class="back-btn">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </li>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./roadmap.html">Roadmap</a></li>
+                    <li><a href="./about.html">About GBAK</a></li>
+                    <li><a href="./mining.html">Mining</a></li>
+                    <li><a href="#contact">Contact Admin</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="mining-registration">
+            <div class="registration-container">
+                <h1 class="registration-title">Sign In to GBAK Mining</h1>
+                <p class="registration-subtitle">Welcome back to our mining community</p>
+
+                <form id="loginForm" class="registration-form" onsubmit="return validateLoginForm(event)">
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address <span class="required">*</span></label>
+                        <div class="input-container">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="loginEmail" name="loginEmail" required placeholder="Enter your email address">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">Password <span class="required">*</span></label>
+                        <div class="input-container">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="loginPassword" name="loginPassword" required placeholder="Enter your password">
+                            <i class="fas fa-eye password-toggle" onclick="togglePassword('loginPassword')"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group remember-me">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="rememberMe" name="rememberMe">
+                            <span class="checkmark"></span>
+                            Keep me signed in
+                        </label>
+                    </div>
+
+                    <button type="submit" class="register-button">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Sign In
+                    </button>
+
+                    <div class="login-link">
+                        Don't have an account? <a href="./mining.html">Register Now</a>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <footer class="main-footer">
+            <div class="footer-content">
+                <div class="company-info">
+                    <p class="company-text">
+                        Developed by
+                        <span class="company-name" translate="no">Ftm_Global_Management</span>
+                    </p>
+                    <div class="company-logo">
+                        <img src="assets/ftm-logo.png.png" alt="FTM Global Management Logo">
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = input.nextElementSibling;
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        function validateLoginForm(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            if (!email || !password) {
+                alert('Please fill in all required fields!');
+                return false;
+            }
+
+            // Redirect to dashboard
+            window.location.href = './dashboard.html';
+            return false;
+        }
+    </script>
+</body>
+</html>
